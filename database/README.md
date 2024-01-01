@@ -12,13 +12,13 @@
     - Index의 성능과 고려해야할 사항
 - 트랜잭션
     - 트랜잭션에 대해서 설명해주세요.
-    - 정의, Lock, 특성, 상태, 주의할 점
     - 트랜잭션 격리 수준(Transaction Isolation Levels)에 대해서 설명해주세요.
-    - cf) [DBMS 는 어떻게 트랜잭션을 관리할까?](https://d2.naver.com/helloworld/407507)
+    - ACID에 대해서 설명해주세요.
+    - 특성, Lock, 상태, 주의할 점
+    - cf) [DBMS는 어떻게 트랜잭션을 관리할까?](https://d2.naver.com/helloworld/407507)
 - 정규화
     - 정규화에 대해서 설명해주세요.
     - 탄생 배경, 정의, 종류, 장단점
-- ACID에 대해서 설명해주세요.
 - JOIN에 대해서 설명해주세요.
 - Statement vs PreparedStatement
 - Redis에 대해서 간단히 설명해주세요.
@@ -126,3 +126,75 @@
     - `EXPLAIN`을 통해서 테스팅을 해서 기존의 걸리는 시간과 비교해보아야 한다
     - 데이터의 분포도에 따라 효율적인 인덱스는 다를 수 있다
 - 복합 인덱스는 '같음', '정렬', '다중 값', '카디널리티' 순으로 사용하는 것이 좋다
+
+### 트랜젝션 
+
+#### 트랜젝션 정의 & 특징 (ACID)
+- 트렌젝션 (Transaction)
+    - 작업의 논리적 기능을 수행하기 위한 작업의 단위
+
+- 트랜젝션 특징 (ACID)
+    - 원자성 (Atomicity) : 전부 또는 전무(All or Nothing)
+    - 일관성 (Consistency) : 트랜잭션 실행 후에도 일관성(데이터 유효성) 유지
+    - 격리성 (Isolation) : 트랜잭션 실행 중 연산의 중간 결과에 다른 트랜잭션이 접근할 수 없음
+    - 영속성 (Durability) : 트랜잭션이 일단 성공적으로 실행되면 그 결과는 영속적
+
+#### 트렌젝션 격리 수준 (Isolation Level)
+- 격리 수준에 따라 발생할 수 있는 문제들
+  - Dirty Read
+    - 커밋이 되지 않은 데이터를 다른 트랜잭션이 읽을 수 있다.
+    - 트랜잭션이 롤백되었을 경우 최종 결괏값이 비 일관적으로 적용될 가능성이 있다.
+  - Non-Repeatable Read
+    - 반복해서 같은 데이터를 읽을 수 없게 된다.
+    - 한 트랜잭션 내 같은 쿼리를 두 번 수행할 때 그 사이에 다른 트랜잭션이 값을 수정/삭제하므로 두 쿼리의 결과가 상이하게 나타나는 비 일관성의 문제가 발생
+  - Phantom Read
+    - 반복 조회 시 결과 집합이 달라지는 문제
+    - 한 트랜잭션 안에서 일정 범위의 레코드를 두 번 읽을 때, 처음 결과에 없던 레코드가 두 번째에서는 나타나는 문제
+
+- 격리 수준 종류
+  - Read Uncommitted
+    - 다른 트랜잭션의 변경 내용이 commit이나 rollback 여부에 상관 없이 보임
+  - Read Committed
+    - 트랜젝션이 완료된  데이터만 다른 트랜잭션에서 조회 가능
+    - 커밋되기 전에는 Undo Log에 있는 곳의 데이터를 읽어옴
+  - Repetable Read (InnoDB 기본 값)
+    - 언두 영역에 백업된 이전 데이터를 이용해서 동일 트랜잭션에서는 같은 내용을 보여줄 수 있도록 함
+    - 다른 트랜젝션에서 커밋이 끝나 디스크 영역에 정보 값이 이미 바뀌었어도, 바뀌기 전의 값의 데이터를 전달함
+  - Serializable
+    - 하나의 트랜잭션에서 락을 가지고 있는 레코드에 다른 트랜잭션이 접근할 수 없음
+    - LOCK을 획득해야만 정보를 조회,변경,추가 할 수 있다.
+    - 비효율적이므로 실제로 사용하는 경우는 드물다.
+    - InnoDB에서는 필요없음
+
+- 격리 수준에 따른 발생 가능한 문제들
+
+  | 구분               | DIRTY READ | NON REPEATABLE READ | PHANTOM READ |
+    |------------------|------------|---------------------|--------------|
+  | Read Uncommitted | 발생 가능      | 발생 가능               | 발생 가능        |
+  | Read Committed   |            | 발생 가능               | 발생 가능        |
+  | Repetable Read   |            |                     | 발생 가능        |
+  | Serializable     |            |                     |              |
+
+#### 트렌젝션 상태
+![](./image/transaction_states.png)
+
+- Active State (활동 상태)
+  - Transaction이 진행중인 상태
+  - 읽기 또는 쓰기가 정상적으로 진행된 경우, “Partially Committed State”
+  - 읽기 또는 쓰기가 실패한 경우, “Failed State”
+- Partially Committed State (부분 완료 상태)
+  - 모든 읽기 쓰기 데이터가 DB에 저장된 경우 “committed state”로 이동
+  - DB에 저장이 실패한 경우, “Failed State”
+- Failed State (실패 상태)
+  - Transaction의 명령이 실패하거나 DB에 데이터 저장, 변경에 실패한 경우
+- Aborted State (철회 상태)
+  - local buffer 또는 main memory에 있는 변경 사항들을 지우거나 롤백함
+- Committed State (완료 상태)
+  - DB에 모든 내용이 저장된 상태
+- Terminated State
+  - 롤백이나 다른 커밋 상태가 없을 때
+  - 이전에 있었던 transaction은 지우고 새로운 transaction에 대기하는 상태
+
+#### Lock 방식
+
+#### 주의할 점
