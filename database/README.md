@@ -185,7 +185,7 @@
 
 #### 트렌젝션 상태
 
-![](./image/transaction_states.png)
+<center><img src="./image/transaction_states.png" width="50%"></center>
 
 - Active State (활동 상태)
     - Transaction이 진행중인 상태
@@ -263,5 +263,25 @@
 ### JOIN
 
 ### CAP 이론
+
+<center><img src="./image/cap_theorem.png" width="50%"></center>
+
+- CAP Theorem
+    - 각각의 DB는 Consistency, Availability, Partition-torlerance 의 특징중에 2가지에 특징에 강점을 둔다.
+    - 3가지를 모두 만족하는 DB는 존재하기 힘들다.
+
+- Consistency (일관성)
+    - 데이터베이스 안의 모든 노드들이 같은 값을 가지고 있음
+    - 요청를 보내면 해당 응답이 지연 될 수 있음
+    - 예시 : 금융 (데이터의 정확하고 일관성 있어야 한다.)
+
+- Availability (가용성)
+    - 데이터베이스에 요청를 보내면 항상 응답을 받음
+        - 일관성이 강조된 DB는 응답을 바로 받올 수 있다.
+    - 하지만 해당 응답이 가장 최근 데이터라는 것을 보장받을 수 없음
+    - 접근하는 노드에 따라 값이 다르다
+
+- Partition-torlerance (분산 처리)
+    - 노드간 소통이 불가능 하더라도 정상적으로 작동함
 
 ### Redis
