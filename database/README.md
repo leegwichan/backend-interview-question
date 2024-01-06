@@ -21,13 +21,15 @@
     - 탄생 배경, 정의, 종류, 장단점
 - JOIN에 대해서 설명해주세요.
 - Statement vs PreparedStatement
-- Redis에 대해서 간단히 설명해주세요.
 - CAP 이론과, Eventual Consistency에 대해서 설명해주세요.
-- Redis와 Memcached의 차이에 대해서 설명해주세요.
-- Elastic Search에 대해서 간단히 설명해주세요.
-    - Elastic Search의 인덱스 구조와 RDBMS의 인덱스 구조의 차이에 대해 설명해주세요.
-    - Elastic Search의 키워드 검색과 RDBMS의 LIKE 검색의 차이에 대해 설명해주세요.
-- MongoDB에 대해서 간단히 설명해주세요.
+- NoSQL의 종류
+  - Redis에 대해서 간단히 설명해주세요.
+  - MongoDB에 대해서 간단히 설명해주세요.
+  - Redis와 Memcached의 차이에 대해서 설명해주세요.
+- Elastic Search
+  - Elastic Search에 대해서 간단히 설명해주세요.
+  - Elastic Search의 인덱스 구조와 RDBMS의 인덱스 구조의 차이에 대해 설명해주세요.
+  - Elastic Search의 키워드 검색과 RDBMS의 LIKE 검색의 차이에 대해 설명해주세요.
 
 ### RDBMS vs NoSQL
 
@@ -284,4 +286,58 @@
 - Partition-torlerance (분산 처리)
     - 노드간 소통이 불가능 하더라도 정상적으로 작동함
 
-### Redis
+### 대표적인 NoSQL의 종류
+
+#### Redis
+
+- 인메모리 데이터베이스, key-value 데이터 모델 기반의 데이터베이스
+- 기본적인 데이터 타입은 string 이며 최대 512MB까지 저장할 수 있다
+- 지원하는 기능
+  - pub/sub(publish/subscribe) 기능을 통한 채팅 시스템
+  - 캐싱 기능, 세션 정보 관리
+  - 정렬된 셋(sorted set) 자료 구조를 이용한 실시간 순위표 서비스
+
+#### MongoDB
+
+- Document 기반의 데이터베이스
+  - JSON을 통해 데이터에 접근할 수 있다
+  - Binary JSON (BSON) 형태로 데이터가 저장
+- 장점 : 확장성이 뛰어나며 빅데이터를 저장할 때 성능이 좋고 고가용성과 샤딩, 레플리카 셋을 지원
+  - 확장성 : 데이터와 트래픽 증가에 따라 데이터를 샤딩하여 수평 확장(scale-out) 할 수 있음
+    - 샤딩 : 서버를 여러 개를 두고 분산 저장한다면 I/O 가 여러 대에서 일어나기 때문에 효율이 좋아진다
+  - 고가용성 : IT 시스템이 다운타임을 제거하거나 최소화하여 거의 100% 상시 액세스 가능하고 신뢰성을 유지하는 능력
+    - 레플리카 셋 : 한 개의 Primary와 두 개 이상의 Secondary로 구성
+    - Primary에만 쓸 수 있고, Primary에서 Secondary로 Replication 실시
+    - Primary가 중단될 경우, 투표를 통해 Secondary 중 하나가 Primary가 된다
+- ObjectID
+  - 도큐먼트를 생성할 때마다 다른 컬렉션에서 중복된 값을 지니기 힘든 유니크한 ObjectID가 생성됨
+  - 유닉스 기반의 타임스탬프 (4바이트), 랜덤 값 (5바이트), 카운터 (3바이트)로 이루어져 있다.
+- 기타
+  - 와이어드타이거 엔진이 기본 스토리지 엔진으로 장착
+  - [MongoDB를 선택하는 가장 큰 이유](https://fastcampus.co.kr/story_article_yhs?gad_source=1&gclid=CjwKCAiA7t6sBhAiEiwAsaieYiXLRBo6sWvi4xi7tcyCUq5QptbvMseiSAjyOG8VyCUq3vChDHNrsRoCXg4QAvD_BwE) : 자유로운 스키마, 편리한 확장, 다양한 종류의 Index
+
+#### Redis vs Memcached
+
+- 공통점
+  - in-memory cache이다.
+  - key-value 저장소이다. (redis는 데이터 구조저장소 성격에 가까움)
+  - 데이터관리를 위해 NoSQL을 사용한다
+  - RAM에 데이터를 보관한다
+
+- Redis
+  - 다양한 자료구조 및 용량 지원 : hash, set, list, string 등 다양한 데이터 구조를 지원
+  - 다양한 삭제 정책 지원 : 캐시의 남은 용량에 따라 6가지의 다른 데이터 삭제 정책을 제공
+  - 디스크 영속화(persistence) 지원 : 디스크 영구 저장 기능 지원 (스냅샷 형식, 로그 형식)
+    - 해당 데이터를 통해 원 상태로 복구할 수 있다
+  - 복제(replication) 지원 : 하나 이상의 레플리카를 가질 수 있다
+  - 트랜잭션(Transaction) 지원
+    - `MULTI` 커맨드를 통해서 트랜잭션을 시작하며 `EXEC`로 추가 명령어를 실행합니다. `WATCH`를 통해서 트랜잭션을 종료합니다.
+
+- Memcached
+  - 정적 데이터 캐싱에 효과적
+    - 내부 메모리관리는 단순한 경우에 매우 뛰어나다
+    - Strings(유일한 지원 데이터 타입)은 추가처리가 필요없어 읽기 전용에 적합
+  - 멀티 스레드 지원
+    - Memcached는 멀티쓰레드이기 때문에, Redis에 비해 스케일링에 유리하다
+    - 컴퓨팅 자원을 추가함으로 스케일 업을 할 수 있다
+    - 캐시된 데이터를 유실 할 확률도 높다
