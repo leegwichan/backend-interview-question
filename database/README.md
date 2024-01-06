@@ -1,35 +1,36 @@
 # Database
 
-- RDBMS vs NoSQL에 대해서 설명해주세요.
-    - RDBMS 정의
-    - NoSQL 정의, 저장 방식에 따른 분류
+- [RDBMS vs NoSQL](#rdbms-vs-nosql)
+  - RDBMS vs NoSQL에 대해서 설명해주세요.
+  - RDBMS 정의
+  - NoSQL 정의, 저장 방식에 따른 분류
 - 데이터 베이스 성능의 중요 요소에 대해 설명해주세요.
-- Index
+- [Index](#인덱스-index)
     - Index란 무엇인가요?
     - 데이터베이스에서 인덱스를 사용하는 이유 및 장단점에 대해 설명해주세요.
     - Index 자료구조
     - Primary index vs Secondary index, Composite index
     - Index의 성능과 고려해야할 사항
-- 트랜잭션
+- [트랜잭션](#트랜젝션-transaction)
     - 트랜잭션에 대해서 설명해주세요.
     - 트랜잭션 격리 수준(Transaction Isolation Levels)에 대해서 설명해주세요.
     - ACID에 대해서 설명해주세요.
     - 특성, Lock, 상태, 주의할 점
     - cf) [DBMS는 어떻게 트랜잭션을 관리할까?](https://d2.naver.com/helloworld/407507)
-- 정규화
+- [정규화](#정규화-normalization)
     - 정규화에 대해서 설명해주세요.
     - 탄생 배경, 정의, 종류, 장단점
 - JOIN에 대해서 설명해주세요.
 - Statement vs PreparedStatement
 - CAP 이론과, Eventual Consistency에 대해서 설명해주세요.
-- NoSQL의 종류
+- [대표적인 NoSQL의 종류](#대표적인-nosql의-종류)
   - Redis에 대해서 간단히 설명해주세요.
   - MongoDB에 대해서 간단히 설명해주세요.
   - Redis와 Memcached의 차이에 대해서 설명해주세요.
-- Elastic Search
-  - Elastic Search에 대해서 간단히 설명해주세요.
-  - Elastic Search의 인덱스 구조와 RDBMS의 인덱스 구조의 차이에 대해 설명해주세요.
-  - Elastic Search의 키워드 검색과 RDBMS의 LIKE 검색의 차이에 대해 설명해주세요.
+- [ElasticSearch](#elasticsearch)
+  - ElasticSearch에 대해서 간단히 설명해주세요.
+  - ElasticSearch의 인덱스 구조와 RDBMS의 인덱스 구조의 차이에 대해 설명해주세요.
+  - ElasticSearch의 키워드 검색과 RDBMS의 LIKE 검색의 차이에 대해 설명해주세요.
 
 ### RDBMS vs NoSQL
 
@@ -135,7 +136,7 @@
     - 데이터의 분포도에 따라 효율적인 인덱스는 다를 수 있다
 - 복합 인덱스는 '같음', '정렬', '다중 값', '카디널리티' 순으로 사용하는 것이 좋다
 
-### 트랜젝션
+### 트랜젝션 (Transaction)
 
 #### 트랜젝션 정의 & 특징 (ACID)
 
@@ -232,7 +233,7 @@
 
 - 트랜잭션은 꼭 필요한 최소한의 코드에만 적용하는 것이 좋다. 즉, 트랜잭션의 범위를 최소화하라는 말이다.
 
-### 정규화
+### 정규화 (Normalization)
 
 - 정규화 관계형 데이터베이스의 설계에서 중복을 최소화하게 데이터를 구조화하는 프로세스
 - 목표 : 이상(갱신, 삽입, 삭제 이상)이 있는 관계를 재구성하여 작고 잘 조직된 관계를 생성하는 것, 데이터의 무결성(데이터의 정확성과 일관성)을 유지
@@ -341,3 +342,5 @@
     - Memcached는 멀티쓰레드이기 때문에, Redis에 비해 스케일링에 유리하다
     - 컴퓨팅 자원을 추가함으로 스케일 업을 할 수 있다
     - 캐시된 데이터를 유실 할 확률도 높다
+
+### ElasticSearch
