@@ -4,7 +4,7 @@
   - RDBMS vs NoSQL에 대해서 설명해주세요.
   - RDBMS 정의
   - NoSQL 정의, 저장 방식에 따른 분류
-- 데이터 베이스 성능의 중요 요소에 대해 설명해주세요.
+- [데이터 베이스 성능의 중요 요소에 대해 설명해주세요.](#데이터베이스-성능-중요-요소)
 - [Index](#인덱스-index)
     - Index란 무엇인가요?
     - 데이터베이스에서 인덱스를 사용하는 이유 및 장단점에 대해 설명해주세요.
@@ -344,3 +344,14 @@
     - 캐시된 데이터를 유실 할 확률도 높다
 
 ### ElasticSearch
+
+- Apache Lucene 기반의 java 오픈소스 분산 검색 엔진
+- 방대한 양의 데이터를 신속하고 거의 실시간으로 저장, 검색, 분석할 수 있다
+- 검색을 위해 단독으로 사용되기도 하며, ELK(Elasticsearch / Logstatsh / Kibana) 스택으로 사용하기도 한다
+
+#### ElasticSearch 인덱스 구조 vs RDBMS 인덱스 구조
+
+- 
+- RDBMS 인덱스 구조 : B 트리, B+ 트리 구조
+
+#### ElasticSearch 키워드 검색 vs RDBMS LIKE query
