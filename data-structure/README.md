@@ -220,6 +220,82 @@
   - 구현 : Queue를 이용하여 다음 방문할 지점을 추가, Set을 이용하여 이미 방문한 노드를 관리
   - 주로 최소 경로 찾을 때 사용함 (ex. [Dijkstra’s Algorithm](https://velog.io/@gwichanlee/%EC%B5%9C%EB%8B%A8%EA%B1%B0%EB%A6%AC-Graph))
 
-### 참고 자료
+### 알고리즘
 
+#### 피보나치 수열
+
+- 꼬리 재귀
+    - 일반적인 재귀를 이용하지 않는 이유 : 시간 복잡도가 $$O(n^2)$$이 되기 때문이다
+    ```java
+    public class FibonacciStairs {
+        public static void main(String[] args) {
+            int n = 10;
+            System.out.println(fibonacci(n));
+        }
+    
+        public static int fibonacci(int input) {
+            return fibonacci(input, 0, 1);
+        }
+    
+        public static int fibonacci(int input, int before, int after) {
+            if (input <= 1) {
+                return after;
+            }
+            return fibonacci(input - 1, after, before + after);
+        }
+    }
+    ```
+
+- 반복문
+    ```java
+    public class FibonacciStairs {
+    
+        public static void main(String[] args) {
+            int n = 10;
+            System.out.println(fibonacci(n));
+        }
+    
+        public static int fibonacci(int n) {
+            int answer = 0;
+            if (n <= 1)
+                return n;
+
+            int prevPrev = 0;
+            int prev = 1;
+
+            for (int i = 2; i <= n; i++) {
+                answer = prev + prevPrev;
+                prevPrev = prev;
+                prev = answer;
+            }
+            return answer;
+        }
+    }
+    ```
+
+#### Prime Number Algorithm
+```java
+public class PrimeNumber {
+
+    public static void main(String[] args) {
+        int n = 109;
+        System.out.println(isPrime(n)); // true
+    }
+
+    public static boolean isPrime(int n) {
+        if (n <= 1) {
+            return false;
+        }
+
+        for (int i = 2; i * i <= n; i++) {
+            if (n % i == 0) {
+                return false;
+            }
+        }
+        return true;
+    }
+}
+```
+
+### 참고 자료
 - [이소진/ C++/백준 1260 DFS와 BFS](https://velog.io/@513sojin/C%EB%B0%B1%EC%A4%80-1260-DFS%EC%99%80BFS)
