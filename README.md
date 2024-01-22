@@ -4,13 +4,13 @@
 
 ## [Database](./database)
 
-## 운영체제
+## [운영체제](./operating-system)
 
-## 네트워크
+## [네트워크](./network)
 
 ## [Java](./java)
 
-## Spring
+## [Spring](./spring)
 
 ### 참고한 Repository/Blog
 - [ksundong/backend-interview-question](https://github.com/ksundong/backend-interview-question?tab=readme-ov-file)
