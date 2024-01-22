@@ -12,13 +12,13 @@
   - HTTP와 HTTPS의 차이점에 대해서 설명해보세요.
   - HTTPS에 대해서 설명하고 SSL Handshake에 대해서 설명해보세요.
   - SSL 인증서 암호화 기법인 대칭키 암호화 기법, 공개키 암호화 기법에 대해 설명해주세요.
-  - HTTP 메서드와 이것이 하는 역할에 대해서 설명해보세요.
   - 무상태성과 비연결성에 대해서 설명해주세요.
   - Expires, Date, Age, If-Modified-Since의 차이점에 대해 설명해주세요.
   - If-Modified-Since와 If-None-Match의 차이점에 대해 설명해주세요.
 
 - REST API
   - RESTful이란 무엇이며, 이것에 대해서 아는대로 설명해보세요.
+  - HTTP 메서드와 이것이 하는 역할에 대해서 설명해보세요.
   - GET과 POST의 차이점에 대해서 설명해보세요.
   - PUT과 PATCH의 차이점에 대해서 설명해보세요.
 
@@ -48,7 +48,7 @@
   - TCP보다 속도가 빠르다
   - ex) 실시간 스트리밍 서비스
 
-### TCP handshaking
+#### TCP handshaking
 
 <center><img src="./image/tcp-handshake.png" width="40%"></center>
 
@@ -74,3 +74,36 @@
   4. [클라이언트 -> 서버]
      클라이언트는 `FIN(N)`을 받고, 확인했다는 `ACK(N+1)`를 서버에게 보낸다
      서버는 ACK를 받은 이후 소켓을 닫는다
+
+### REST API
+
+- REST (Representational State Transfer API)
+  - HTTP URI(Uniform Resource Identifier)를 통해 자원(Resource)을 명시한다
+  - HTTP Method를 통해 해당 자원(URI)에 대한 CRUD 기능을 적용한다.
+
+- [REST의 특징](https://aws.amazon.com/ko/what-is/restful-api/)
+  - Server-Client(서버-클라이언트 구조)
+  - Stateless(무상태)
+  - Cacheable(캐시 처리 가능)
+  - Layered System(계층화)
+  - Uniform Interface(인터페이스 일관성)
+
+- REST API : REST 아키텍처의 제약 조건을 준수하는 애플리케이션 프로그래밍 인터페이스
+
+#### HTTP Method
+
+- HTTP Method
+  - 해당 자원(URI)에 대한 CRUD 기능을 의미한다
+
+- 종류
+  - GET
+  - POST
+  - PUT
+  - PATCH
+  - DELETE
+
+- GET vs POST
+  - 
+
+- PUT vs PATCH
+  - 
