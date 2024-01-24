@@ -9,10 +9,10 @@
 
 - HTTP
   - HTTP의 문제점
+  - 무상태성과 비연결성에 대해서 설명해주세요.
   - HTTP와 HTTPS의 차이점에 대해서 설명해보세요.
   - HTTPS에 대해서 설명하고 SSL Handshake에 대해서 설명해보세요.
   - SSL 인증서 암호화 기법인 대칭키 암호화 기법, 공개키 암호화 기법에 대해 설명해주세요.
-  - 무상태성과 비연결성에 대해서 설명해주세요.
   - Expires, Date, Age, If-Modified-Since의 차이점에 대해 설명해주세요.
   - If-Modified-Since와 If-None-Match의 차이점에 대해 설명해주세요.
 
@@ -74,6 +74,50 @@
   4. [클라이언트 -> 서버]
      클라이언트는 `FIN(N)`을 받고, 확인했다는 `ACK(N+1)`를 서버에게 보낸다
      서버는 ACK를 받은 이후 소켓을 닫는다
+
+### HTTP
+
+#### HTTP
+
+- HTTP
+  - HyperText Transfer Protocol
+  - 텍스트 기반의 통신 규약으로 인터넷에서 데이터를 주고받을 수 있는 프로토콜(규약, 형식)
+  - Request, Response의 구조는 동일하며 Start Line에 담고 있는 정보만 다르다
+    - HTTP 구조 : Start Line (Status Line) / Headers / Body
+    - HTTP Request : Start Line에 HTTP Method와 URI 정보가 담겨있다
+    - HTTP Response : Status Line에 Status code, Status text가 담겨 있다 
+
+- 특징
+  - 클라이언트 - 서버 구조
+    - 클라이언트는 서버에 요청을 보내고, 응답을 대기한다.
+    - 서버는 요청에 대한 결과를 만들어 응답한다.
+  - 무상태성
+    - 서버가 클라이언트의 상태를 보존하지 않는다
+    - 서버의 확장성(Scale out)이 높아지는 장점이 있지만, 클라이언트가 추가 데이터를 전송해야 한다
+  - 비연결성
+    - 서버와 클라이언트가 기본적으로 연결을 유지하지 않는다
+    - 여러 사람이 사용하더라도, 요청 하나의 처리 시간은 초 단위 이하이다
+    - 서버 자원을 매우 효율적으로 활용할 수 있게 된다
+
+- HTTP의 문제점
+  - 평문 통신이기에 도청이 가능하다. (암호화 필요)
+  - 완전성을 증명할 수 없기 떄문에 변조가 가능하다. (암호화 필요)
+  - 통신 상대를 확인하지 않기 때문에 위장이 가능하다. (인가, 인증 필요)
+  - 통신하고 있는 상대방이 허가된 상대인지 확인할 수 없다. (인가, 인증 필요)
+  - 의미없는 리퀘스트도 수신하기 때문에 DoS 공격을 당할 수 있다.
+  
+
+#### HTTPS
+
+- HTTPS에 대해서 설명하고 SSL Handshake에 대해서 설명해보세요.
+- SSL 인증서 암호화 기법인 대칭키 암호화 기법, 공개키 암호화 기법에 대해 설명해주세요.
+
+- HTTP vs HTTPS
+
+#### HTTP Headers
+
+- Expires, Date, Age, If-Modified-Since의 차이점에 대해 설명해주세요.
+- If-Modified-Since와 If-None-Match의 차이점에 대해 설명해주세요.
 
 ### REST API
 
