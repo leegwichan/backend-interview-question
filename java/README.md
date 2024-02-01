@@ -214,12 +214,68 @@ interface Example {
 
 #### String 만들기
 
+- StringBuffer vs StringBuilder
+  - 공통점 : String과 달리, 둘 다 크기가 유연하게 변하는 가변성을 갖는다. (`append()`)
+    - 변하지 않는 문자열을 자주 사용할 경우 String 타입을 사용하는 것이 좋다
+  - 차이점 : StringBuilder는 동기화를 지원하지 않는 반면, StringBuffer는 동기화를 지원한다
+    - StringBuffer는 `synchronized`를 사용하므로 멀티 스레드 환경에서도 안전하게 동작할 수 있습니다.
+    - StringBuilder는 `synchronized`를 사용하지 않으모로 단일 스르드 환경에서는 StringBuffer보다 더 빠르게 동작할 수 있다
+
+- String Constant Pool
+  - String 을 리터럴 값으로 할당하는 경우엔 Heap 메모리 영역안의 특별한 메모리 공간인 String constant pool 에 저장한다
+  - String constant pool에 존재하는 리터럴 값을 사용하게 된다면, 현재 존재하는 값을 사용한다
+  - new 키워드를 통해 String 변수에 값을 할당하게 되면 일반적인 객체와 동일하게 Heap 영역에 동적으로 메모리 공간이 할당된다
+    - 이와 같은 방법은 메모리가 낭비되므로, 리터럴 방법으로 할당하는 것이 좋다
+
 #### 컬렉션 프레임워크
 
+<center><img src="./image/collection-framework.png" width="40%"></center>
+
+- Java Collection Framework
+  - 데이터를 저장하는 자료 구조와 데이터를 처리하는 알고리즘을 구조화하여 클래스로 구현해 놓은 것
+- 컬렉션 프레임워크의 장점
+  - 인터페이스와 다형성을 이용한 객체지향적 설계를 통해 **표준화**되어 있기 때문에, 사용법을 익히기에도 편리하고 재사용성이 높다.
+  - 데이터 구조 및 알고리즘의 고성능 구현을 제공하여 프로그램의 성능과 품질을 향상시킨다.
+  - 관련 없는 API 간의 상호 운용성을 제공한다. (ex. `List`, `Map`, ...)
+  - 이미 구현되어있는 API를 사용하면 되기에, 새로운 API를 익히고 설계하는 시간이 줄어든다.
+- Iterator
+  - (Map을 제외한) 컬렉션 인터페이스들의 가장 최상위 인터페이스
+  - Iterator 하위 클래스들은 모두 향상된 for문을 사용할 수 있다
+
 #### Java 8 추가 기능
+- Lamda 표현식, Funtional Interface
+  - Lamda 표현식 : 익명 클래스를 사용하면 가독성이 떨어지는데, 이를 보완함
+  - FuntionalInterface : 함수가 하나만 있는 인터페이스
+    - 람다식 하나만을 이용하여, 클래스를 만들 수 있다.
+    - 표준 API 제공 (`Runnable`, `Consumer`, ...)
+    - 동작을 손쉽게 파라미터화할 수 있게 되었다
+- Stream API
+  - 다양한 연산을 쉽게 제공함
+  - 게으른 형식의 연산으로 구성, 멀티 코어 CPU를 활용한 병렬 처리
+- Optional
+  - `T` 형식을 반환하거나 값이 없음을 의미
+  - `NullPointerException` 방지, 다양한 API 제공
+- 날짜 관련 클래스
+  - 기존 문제점 : `Date` - 밀리초 단위로 표현해서 직관적이지 않음, `Calendar` - 쉽게 에러를 일으킴, 둘 다 가변 객체
+  - `LocalDate`, `LocalTime`, `DateTimeFormatter`, `ZoneId` 등을 통해 날짜 시간 연산등을 쉽게할 수 있다
+- 디폴드 메서드 : interface에 기본 구현 제공 가능
+  - 새로 추가된 기능을 하나하나 구현하지 않아도 된다.
+  - 인터페이스가 바뀌어도 사용자는 신경 쓸 필요 없다.
+- StringJoiner
+  - 여러 문자 사이나 앞뒤에 delimiter, prefix, suffix를 추가하여 문자를 합필 수 있다 
 
 #### Optional
 
+- `null` 때문에 발생하는 문제
+  - 에러의 근원 : `NullPointerException`은 자바에서 흔히 발생하는 에러이다
+  - 코드를 어지럽힌다 : 중첩된 null 체크
+  - 아무 의미가 없다
+  - 자바 철학에 위배된다 : 자바는 개발자로부터 모든 포인터를 숨겼는데, null 포인터는 숨기지 못했다.
+  - 형식 시스템에 구멍을 만든다 : null이 할당되기 시작하면서 다른 시스템으로 퍼졌을 때, 애초에 null이 어떤 의미로 사용되었는지 알 수 없다.
+
+- Optional
+  - 선택형 값을 캡슐화하는 클래스
+  - null 처리를 용이하게 할 수 있는 메서드를 제공
 
 ### 객체 지향
 
