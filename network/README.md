@@ -1,13 +1,13 @@
 # 네트워크
 
-- [TCP vs UDP](#tcp-vs-udp)
+- TCP vs UDP
   - TCP와 UDP의 차이점에 대해서 설명해보세요.
   - TCP 3, 4 way handshake에 대해서 설명해보세요.
   - OSI 7계층과 그 존재 이유, TCP/IP 4계층에 대해 설명해보세요.
     - 웹 서버 소프트웨어(Apache, Nginx)는 OSI 7계층 중 어디서 작동하는지 설명해보세요.
     - 웹 서버 소프트웨어(Apache, Nginx)의 서버 간 라우팅 기능은 OSI 7계층 중 어디서 작동하는지 설명해보세요.
 
-- [HTTP](#http)
+- HTTP
   - HTTP의 문제점
   - 무상태성과 비연결성에 대해서 설명해주세요.
   - HTTP와 HTTPS의 차이점에 대해서 설명해보세요.
@@ -16,7 +16,7 @@
   - Expires, Date, Age, If-Modified-Since의 차이점에 대해 설명해주세요.
   - If-Modified-Since와 If-None-Match의 차이점에 대해 설명해주세요.
 
-- [REST API](#rest-api)
+- REST API
   - RESTful이란 무엇이며, 이것에 대해서 아는대로 설명해보세요.
   - HTTP 메서드와 이것이 하는 역할에 대해서 설명해보세요.
   - GET과 POST의 차이점에 대해서 설명해보세요.

@@ -1,13 +1,13 @@
 # Spring
 
 - Spring Core
-  - [IoC / DI](#ioc--di)
+  - IoC / DI
     - Spring DI/IoC는 어떻게 동작하나요?
     - DI 종류에는 어떤 것이 있고, 이들의 차이는 무엇인가요?
     - 의존성과 설정 값을 생성자 인자로 주입해야 하는 이유에 대해 설명해주세요
     - `@Autowired` 과정에 대해 설명해주세요
     - DI 컨테이너(IoC 컨테이너)의 역할은 무엇인가요?
-  - [Spring Bean](#spring-bean)
+  - Spring Bean
     - Spring Bean이 무엇인가요?
     - Spring Bean의 생성 과정을 설명해주세요
     - Spring Bean의 Scope에 대해서 설명해주세요
@@ -29,7 +29,7 @@
   - JPA Propagation 전파단계를 설명해주세요.
   - N+1 문제는 무엇이고 이것이 발생하는 이유와 이를 해결하는 방법을 설명해주세요.
 
-- [기타](#기타)
+- 기타
   - POJO란 무엇인가요? Spring Framework에서 POOJO는 무엇이 될 수 있을까요?
   - Spring Application을 구동할 때, 메서드를 실행시키는 방법에 대해 설명해주세요
   - Spring에서 CORS 에러를 해결하기 위한 방법을 설명해주세요

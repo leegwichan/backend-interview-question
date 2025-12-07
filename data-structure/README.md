@@ -1,15 +1,14 @@
 # 자료 구조 & 알고리즘
 
-- [선형 구조](#선형-구조)
+### 목차
+- 선형 구조
   - 배열과 링크드 리스트(Linked List)의 차이를 설명해주세요.
   - List와 Set의 차이에 대해서 설명해주세요.
   - Stack, Queue에 대해서 설명해주세요.
-
-- [Map 구조](#map-구조)
+- Map 구조
   - Hash Function, HashTable에 대해서 설명해주세요.
   - 해시 충돌 및 해결 방법에 대해서 설명해주세요.
-
-- [Tree 구조](#tree-구조)
+- Tree 구조
   - Tree, Binary Tree, BST, AVL Tree에 대해서 설명해주세요.
     - Full Binary Tree, Complete Binary Tree
     - Red-Black Tree
@@ -18,16 +17,10 @@
   - [Database] B 트리, B+ 트리
   - BST의 최악의 경우의 예와 시간복잡도에 대해서 설명해주세요.
   - DFS, BFS에 대해서 설명해주세요.
-
-- [Graph 구조](#graph-구조)
+- Graph 구조
   - Graph 용어 정리, Graph 구현
   - DFS, BFS에 대해서 설명해주세요.
-
-- [알고리즘](#알고리즘)
-  - 피보나치 수열을 코드로 구현하는 방법에 대해서 설명해주세요.
-  - Prime Number Algorithm
-
-- [정렬, 탐색](#정렬-탐색-알고리즘)
+- 정렬, 탐색
   - 정렬, 탐색에 대해 설명해주세요.
   - 버블 정렬, 선택 정렬, 삽입 정렬, 병합 정렬, 퀵 정렬, 힙 정렬
   - 순차 탐색 vs 이진 탐색
@@ -246,93 +239,14 @@
   - 주로 최소 경로 찾을 때 사용함 (
     ex. [Dijkstra’s Algorithm](https://velog.io/@gwichanlee/%EC%B5%9C%EB%8B%A8%EA%B1%B0%EB%A6%AC-Graph))
 
-### 알고리즘
-
-#### 피보나치 수열
-
-- 꼬리 재귀
-  - 일반적인 재귀를 이용하지 않는 이유 : 시간 복잡도가 $O(n^2)$이 되기 때문이다
-    ```java
-    public class FibonacciStairs {
-        public static void main(String[] args) {
-            int n = 10;
-            System.out.println(fibonacci(n));
-        }
-    
-        public static int fibonacci(int input) {
-            return fibonacci(input, 0, 1);
-        }
-    
-        public static int fibonacci(int input, int before, int after) {
-            if (input <= 1) {
-                return after;
-            }
-            return fibonacci(input - 1, after, before + after);
-        }
-    }
-    ```
-
-- 반복문
-    ```java
-    public class FibonacciStairs {
-    
-        public static void main(String[] args) {
-            int n = 10;
-            System.out.println(fibonacci(n));
-        }
-    
-        public static int fibonacci(int n) {
-            int answer = 0;
-            if (n <= 1)
-                return n;
-
-            int prevPrev = 0;
-            int prev = 1;
-
-            for (int i = 2; i <= n; i++) {
-                answer = prev + prevPrev;
-                prevPrev = prev;
-                prev = answer;
-            }
-            return answer;
-        }
-    }
-    ```
-
-#### Prime Number Algorithm
-
-```java
-public class PrimeNumber {
-
-    public static void main(String[] args) {
-        int n = 109;
-        System.out.println(isPrime(n)); // true
-    }
-
-    public static boolean isPrime(int n) {
-        if (n <= 1) {
-            return false;
-        }
-
-        for (int i = 2; i * i <= n; i++) {
-            if (n % i == 0) {
-                return false;
-            }
-        }
-        return true;
-    }
-}
-```
 
 ### 정렬, 탐색 알고리즘
 
-#### 순차 탐색 vs 이진 탐색
-
-- 순차 탐색
+#### 이진 탐색
+- 순차 탐색 
 - 이진 탐색
 
 #### 정렬 알고리즘
-
 - 버블 정렬
   - 서로 인접한 두 원소를 검사하여 정렬하는 알고리즘
     - 인접한 2개의 레코드를 비교하여 크기가 순서대로 되어 있지 않으면 서로 교환한다.
@@ -358,5 +272,4 @@ public class PrimeNumber {
   - 모든 값을 Priority Queue에 넣은 후에, 하나씩 자료를 빼서 정렬함
 
 ### 참고 자료
-
 - [이소진/ C++/백준 1260 DFS와 BFS](https://velog.io/@513sojin/C%EB%B0%B1%EC%A4%80-1260-DFS%EC%99%80BFS)

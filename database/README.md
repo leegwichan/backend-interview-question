@@ -1,33 +1,33 @@
 # Database
 
-- [RDBMS vs NoSQL](#rdbms-vs-nosql)
+- RDBMS vs NoSQL
   - RDBMS vs NoSQL에 대해서 설명해주세요.
   - RDBMS 정의
   - NoSQL 정의, 저장 방식에 따른 분류
-- [데이터 베이스 성능의 중요 요소에 대해 설명해주세요.](#데이터베이스-성능-중요-요소)
-- [Index](#인덱스-index)
+- DB 성능 중요 요소
+- Index
     - Index란 무엇인가요?
     - 데이터베이스에서 인덱스를 사용하는 이유 및 장단점에 대해 설명해주세요.
     - Index 자료구조
     - Primary index vs Secondary index, Composite index
     - Index의 성능과 고려해야할 사항
-- [트랜잭션](#트랜젝션-transaction)
+- 트랜잭션
     - 트랜잭션에 대해서 설명해주세요.
     - 트랜잭션 격리 수준(Transaction Isolation Levels)에 대해서 설명해주세요.
     - ACID에 대해서 설명해주세요.
     - 특성, Lock, 상태, 주의할 점
     - cf) [DBMS는 어떻게 트랜잭션을 관리할까?](https://d2.naver.com/helloworld/407507)
-- [정규화](#정규화-normalization)
+- 정규화
     - 정규화에 대해서 설명해주세요.
     - 탄생 배경, 정의, 종류, 장단점
 - JOIN에 대해서 설명해주세요.
 - Statement vs PreparedStatement
 - CAP 이론과, Eventual Consistency에 대해서 설명해주세요.
-- [대표적인 NoSQL의 종류](#대표적인-nosql의-종류)
+- 대표적인 NoSQL의 종류
   - Redis에 대해서 간단히 설명해주세요.
   - MongoDB에 대해서 간단히 설명해주세요.
   - Redis와 Memcached의 차이에 대해서 설명해주세요.
-- [ElasticSearch](#elasticsearch)
+- ElasticSearch
   - ElasticSearch에 대해서 간단히 설명해주세요.
   - ElasticSearch의 인덱스 구조와 RDBMS의 인덱스 구조의 차이에 대해 설명해주세요.
   - ElasticSearch의 키워드 검색과 RDBMS의 LIKE 검색의 차이에 대해 설명해주세요.
@@ -56,7 +56,7 @@
 
 | 구분             | RDBMS (관계형 DB)                                                      | NoSQL (비관계형 DB)                                                                |
 |----------------|---------------------------------------------------------------------|--------------------------------------------------------------------------------|
-| Data Modeling  | - 스키마에 맞춰서 관리하기 때문에 데이터 **정합성 보장** </br> - 관계를 맺고있는 데이터가 자주 변경되는 경우 | - 자유롭게 데이터를 관리할 수 있다 </br> - 데이터 구조를 정확히 알 수 없는 경우 </br> - 데이터가 변경/확장될 수 있는 경우 |
+| Data Modeling  | - 스키마에 맞춰서 관리하기 때문에 데이터 정합성 보장 </br> - 관계를 맺고있는 데이터가 자주 변경되는 경우 | - 자유롭게 데이터를 관리할 수 있다 </br> - 데이터 구조를 정확히 알 수 없는 경우 </br> - 데이터가 변경/확장될 수 있는 경우 |
 | Scalability    | Scale Up </br> 각 단일 서버의 성능을 증가시켜서 더 많은 요청을 처리 (한계가 존재함)             | Scale Out </br> 요청량이 증가하더라도 동일하거나 비슷한 사양의 새로운 하드웨어를 추가                         |
 | Query Language | SQL(Structured Query Language)                                      | DB마다 문법이 다름                                                                    |
 | Consistency    | STRONG                                                              | eventual consistency </br> - may take time to be consistent                    |

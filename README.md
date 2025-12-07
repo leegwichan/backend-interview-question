@@ -1,16 +1,11 @@
 # Backend Interview Question
 
-## [자료구조/알고리즘](./data-structure)
-
-## [Database](./database)
-
-## [운영체제](./operating-system)
-
-## [네트워크](./network)
-
-## [Java](./java)
-
-## [Spring](./spring)
+- [자료구조/알고리즘](./data-structure)
+- [Database](./database)
+- [운영체제](./operating-system)
+- [네트워크](./network)
+- [Java](./java)
+- [Spring](./spring)
 
 ### 참고한 Repository/Blog
 - [ksundong/backend-interview-question](https://github.com/ksundong/backend-interview-question?tab=readme-ov-file)
