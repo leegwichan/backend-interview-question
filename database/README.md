@@ -132,6 +132,7 @@
 
 - [트랜젝션 정의 & 특징](./transation.md)
 - [트렌젝션 격리 수준 (Isolation Level)](./isolation_level.md)
+  - MVCC
 
 #### 트렌젝션 상태
 
