@@ -76,13 +76,12 @@
      서버는 ACK를 받은 이후 소켓을 닫는다
 
 ### HTTP
-
-#### HTTP
-
 - [HTTP의 정의 & 특징](./http.md)
   - HTTP의 문제점
-
-
+- HTTPS의 정의 & 특징
+- [REST API](./rest_api.md)
+  - HTTP Method
+  - 비멱등성 API 중복 호출 방지
 
 #### HTTPS
 
@@ -156,52 +155,3 @@
   - **If-Modified-Since** : 마지막으로 요청이 있었을 때를 기준으로, 변경이 있었을 때만 응답을 받음 (조건부 요청)
     - 변경이 없었을 경우, '304 Not Modified'로 응답한다
     - ex) `If-Modified-Since : Fri, 05 Jul 2002, 05:00:00 GMT`
-
-### REST API
-
-- REST (Representational State Transfer API)
-  - HTTP URI(Uniform Resource Identifier)를 통해 자원(Resource)을 명시한다
-  - HTTP Method를 통해 해당 자원(URI)에 대한 CRUD 기능을 적용한다.
-
-- [REST의 특징](https://aws.amazon.com/ko/what-is/restful-api/)
-  - Server-Client(서버-클라이언트 구조)
-  - Stateless(무상태)
-  - Cacheable(캐시 처리 가능)
-  - Layered System(계층화)
-  - Uniform Interface(인터페이스 일관성)
-
-- REST API : REST 아키텍처의 제약 조건을 준수하는 애플리케이션 프로그래밍 인터페이스
-
-#### HTTP Method
-
-- HTTP Method
-  - 해당 자원(URI)에 대한 CRUD 기능을 의미한다
-  - Method를 분리하는 이유 : 리소스(URI)와 동작(Method)을 분리하기 위해
-
-- 종류
-  - GET : 해당 자원을 조회
-  - POST : 해당 자원을 등록(추가)
-  - PUT : 리소스를 완전히 대체 (해당 리소스가 없다면, 새롭게 생성)
-  - PATCH : 리소스를 부분적으로 변경함
-  - DELETE : 해당 자원을 삭제
-  - 이외, HEAD, OPTIONS, CONNECT 등이 있다
-
-- GET vs POST
-  - GET
-    - 리소스를 조회하는 메서드
-    - 서버에게 데이터를 전달하는 경우, 쿼리 스트링을 통해 전달함
-    - 성공적으로 조회시, 200 OK 응답를 받음
-    - ex) `GET /members?sort=age`
-  - POST
-    - 새로운 리소스를 생성하는데 사용
-    - 서버에게 데이터를 전달할 때, Body에 정보를 담아 전송한다
-    - 성공적으로 생성시, 201 CREATED 응답을 받음
-
-- PUT vs PATCH
-  - PUT
-    - 리소스를 완전히 덮어 씌운다
-    - 멱등성을 지닌다
-  - PATCH
-    - 리소스를 부분 변경하는데 사용한다
-    - 멱등성을 지니지 않는다
-  - 멱등성 : 같은 요청을 반복했을 때, 매번 같은 결과가 나오는 특징
