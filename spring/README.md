@@ -163,6 +163,11 @@ class IfNotEnrolledCase {
   - 내가 만든 클래스를 등록할 때는 `@Component`를 추천한다
   - 외부 라이브러리 등 내가 수정할 수 없는 클래스를 등록할 때는 `@Configuration`, `@Bean`을 사용하는 것을 추천한다
 
+### Spring MVC
+- [Servlet Container(Tomcat) 스레드 풀](./servlet_container_thread_pool.md)
+- Spring MVC
+
+
 ### JPA
 
 #### JPA를 사용하는 이유
