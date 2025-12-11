@@ -40,7 +40,7 @@
   - 신뢰성을 보장하며 3-way handshaking 과정을 통해 연결
   - TCP 연결경로를 통하여 데이터를 전송하고 이에 대한 응답(ack)을 받음으로 써 그 데이터가 올바르게 전송되었음을 보장
   - 양방향 연결 (가상회선 연결방식)
-  - ex)
+  - ex) HTTP
 
 - UDP (User Datagram Protocol)
   - datagram 기반의 전송 프로토콜
