@@ -89,6 +89,9 @@
 - [트렌젝션 격리 수준 (Isolation Level)](./transaction_isolation_level.md)
   - MVCC
 - [데드락](./deadlock.md)
+  - 데드락의 4가지 필요조선
+  - 데드락 예방 방법
+  - 라이브 락
 
 #### 트렌젝션 상태
 
