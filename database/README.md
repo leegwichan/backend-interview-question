@@ -78,7 +78,7 @@
 
 ### 인덱스 (Index)
 - [인덱스](./index.md)
-  - 장단점, 사용 시 고려해야 할 점
+  - 장단점, 사용 시 고려해야 할 점, 조회에서 인덱스를 사용하지 않는 경우
   - Primary index vs Secondary index, Composite index
 - [인덱스 자료구조](./index_data_structure.md)
 
@@ -89,7 +89,7 @@
 - [트렌젝션 격리 수준 (Isolation Level)](./transaction_isolation_level.md)
   - MVCC
 - [데드락](./deadlock.md)
-  - 데드락의 4가지 필요조선
+  - 데드락의 4가지 필요조건
   - 데드락 예방 방법
   - 라이브 락
 
