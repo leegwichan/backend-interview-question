@@ -165,7 +165,9 @@ class IfNotEnrolledCase {
 
 ### Spring MVC
 - [Servlet Container(Tomcat) 스레드 풀](./servlet_container_thread_pool.md)
-- Spring MVC
+  - 스레드 풀 설정, 포화 정책
+- [Spring MVC](./spring_mvc.md)
+  - 
 
 
 ### JPA
