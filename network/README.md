@@ -33,47 +33,10 @@
 
 ### TCP vs UDP
 
-- 공통점 : OSI 7 Layer 중 전송 계층에서 사용되는 프로토콜
-
-- TCP (Transmission Control Protocol)
-  - 연결 위주 전송 방식 (Connection-Oriented)
-  - 신뢰성을 보장하며 3-way handshaking 과정을 통해 연결
-  - TCP 연결경로를 통하여 데이터를 전송하고 이에 대한 응답(ack)을 받음으로 써 그 데이터가 올바르게 전송되었음을 보장
-  - 양방향 연결 (가상회선 연결방식)
-  - ex) HTTP
-
-- UDP (User Datagram Protocol)
-  - datagram 기반의 전송 프로토콜
-  - 비연결형 데이터 전송, 비신뢰성 프로토콜 (데이터가 목적 호스트에 도착한다는 보장을 하지 못한다)
-  - TCP보다 속도가 빠르다
-  - ex) 실시간 스트리밍 서비스
-
-#### TCP handshaking
-
-<center><img src="./image/tcp-handshake.png" width="40%"></center>
-
-- TCP 3-way handshaking (서버와 클라이언트를 논리적으로 연결하는 과정)
-  1. [클라이언트 -> 서버]
-     랜덤으로 Sequence number(J)를 만들고, 자신의 `SYN(J)`를 서버에 보낸다
-  2. [서버 -> 클라이언트]
-     서버는 `SYN(J)`를 받고, 랜덤으로 Sequence number(K)를 만든다
-     `SYN(J)`를 잘 받았다는 의미인 `ACK(J+1)`과 서버가 만든 `SYN(K)`를 클라이언트에게 보낸다
-  3. [클라이언트 -> 서버]
-     클라이언트는 `SYN(K)`를 잘 받았다는 의미로 `ACK(K+1)`을 서버로 보낸다
-
-- TCP 4-way handshaking (클라이언트가 서버에 연결을 끊는 과정)
-  1. [클라이언트 -> 서버]
-     클라이언트는 내부적으로 `close()`를 호출하여 서버에게 연결을 종료한다는 `FIN(M)` 플래그를 보낸다
-     (FIN 패킷 내에는 실질적으로 ACK도 포함되어 있다)
-  2. [서버 -> 클라이언트]
-     서버는 `FIN(M)`을 받고, 확인했다는 `ACK(M+1)`를 클라이언트에게 보내고 자신의 통신이 끝날때까지 기다린다 (TIME_WAIT 상태)
-     아직 남은 데이터가 있다면 마저 전송을 마친 후에 내부적으로 `close()`를 호출한다
-  3. [서버 -> 클라이언트]
-     데이터를 모두 보냈다면, 서버는 연결이 종료에 합의 한다는 의미로 `FIN(N)` 패킷을 클라이언트에게 보낸다
-     클라이언트가 신호를 보내줄 때까지 기다니는 LAST_ACK 상태로 들어간다
-  4. [클라이언트 -> 서버]
-     클라이언트는 `FIN(N)`을 받고, 확인했다는 `ACK(N+1)`를 서버에게 보낸다
-     서버는 ACK를 받은 이후 소켓을 닫는다
+- [TCP](./tcp.md)
+  - TCP vs UDP
+  - TCP 특징
+  - TCP handshaking
 
 ### HTTP
 - [HTTP의 정의 & 특징](./http.md)
