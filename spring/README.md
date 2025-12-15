@@ -96,10 +96,14 @@
 - [Servlet Container(Tomcat) 스레드 풀](./servlet_container_thread_pool.md)
   - 스레드 풀 설정, 포화 정책
 - [Spring MVC](./spring_mvc.md)
-- [Filter, Interceptor](./spring_mvc_filter_interceptor.md)
+  - Spring MVC 구조, `HandlerAdapter` - `Handler` 간 동작
+- [Controller](./spring_mvc_controller.md)
+  - `@Controller` vs `@RestController`
+- [Filter vs Interceptor](./spring_mvc_filter_interceptor.md)
+  - 체인 형식의 관리
+  - AOP vs 인터셉터
 
-
-### JPA
+### Spring JPA
 
 #### JPA를 사용하는 이유
 
