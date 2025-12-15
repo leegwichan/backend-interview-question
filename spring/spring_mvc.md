@@ -25,8 +25,8 @@
 <center><img src="./image/spring_mvc_handler_adapter.png" width="80%"></center>
 
 - `RequestMappingHandlerAdapter`의 동작 방식
-  - `ArgumentResolver` : 
-  - `ReturnValueHandler` : 
+  - `ArgumentResolver` : 컨트롤러(핸들러)가 필요로 하는 다양한 파라미터의 값(객체)을 생성, 이렇게 파리미터의 값이 모두 준비되면 컨트롤러를 호출하면서 값을 넘겨줌, 30개가 넘는 종류를 기본으로 제공
+  - `ReturnValueHandler`(`HandlerMethodReturnValueHandler`) : 응답 값을 변환하고 처리 (ex. `ModelAndView`, `@ResponseBody`, `HttpEntity`, `String`)
 
 - `Converter` (스프링 타입 컨버터) : 
   - https://rebugs.tistory.com/640
