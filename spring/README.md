@@ -20,8 +20,7 @@
 
 - Spring Filter
   - Servlet Filter와 Spring Interceptor의 차이는 무엇인가요?
-  - Filter는 Servlet의 스펙이고, Interceptor는 Spring MVC의 스펙입니다. Spring Application에서 Filter와 Interceptor를 통해 예외를 처리할 경우 어떻게
-    해야 할까요?
+  - Filter는 Servlet의 스펙이고, Interceptor는 Spring MVC의 스펙입니다. Spring Application에서 Filter와 Interceptor를 통해 예외를 처리할 경우 어떻게 해야 할까요?
 
 - JPA
   - JPA를 쓴다면 그 이유에 대해서 설명해주세요.
@@ -167,7 +166,7 @@ class IfNotEnrolledCase {
 - [Servlet Container(Tomcat) 스레드 풀](./servlet_container_thread_pool.md)
   - 스레드 풀 설정, 포화 정책
 - [Spring MVC](./spring_mvc.md)
-  - 
+- [Filter, Interceptor](./spring_mvc_filter_interceptor.md)
 
 
 ### JPA
