@@ -50,46 +50,13 @@
   - 런타임 영역 구조, GC
 - [Java 타입](./java_type.md)
   - 원시 타입 vs 참조 타입
-  - Constant String Pool
+  - String (Constant String Pool, StringBuffer & StringBuilder)
+- [Java 기본 특징](./java_basic.md)
+  - 오버라이딩 vs 오버로딩
+  - 인터페이스 vs 추상 클래스
+  - static keyword
 
 ### 클래스
-
-#### 오버라이딩 vs 오버로딩
-
-- 매서드 오버라이딩
-  - 상위 클래스에서 상속받은 메서드와 동일한 이름의 메서드를 재정의하는 것 
-  - 기능을 하위 클래스에 맞추어 다시 메서드를 설정함
-- 매서드 오버로딩 
-  - 같은 클래스 내에서 매서드의 이름이 같으면서 매개변수의 타입 or 개수가 다른 경우
-
-#### 인터페이스 vs 추상 클래스
-
-- 추상 클래스 (abstract class) 
-  - 추상 메서드를 하나 이상 포함한 매서드
-  - 추상 클래스 만으로 객체 생성 불가
-- 인터페이스 (interface)
-  - 오직 추상 메서드와 상수만을 멤버로 가질 수 있다. (추상도가 추상 클래스보다 높음)
-  - 모든 필드가 public static final 로 선언됨
-  - static과 default 메서드 이외의 모든 메서드가 `public abstract`로 정의된다
-
-#### Static
-
-- static 변수
-  - 클래스 로더가 클래스를 로딩해서 메소드 메모리 영역에 적재할때 클래스별로 관리
-  - Garbage Collector가 관여하지 않음 (Heap 영역이 아닌 Static(Method) 영역에 할당됨)
-  - 모든 객체가 메모리를 공유
-
-- static 메서드
-  - 클래스가 메모리에 올라갈 때 정적 메소드가 자동적으로 생성
-  - 인스턴스를 생성하지 않아도 호출을 할 수 있다
-  - 유틸리티 함수를 만드는데 유용하게 사용한다
-
-- static을 지양해야 하는 이유
-  - 객체와 다른 라이프사이클 : 클래스를 이용한 작업을 끝내더라도 static 변수가 점유하고 있는 메모리는 GC에 의해 회수되지 않음
-  - 동시성 이슈 문제 : static 변수에 있는 객체가 변경이 가능하다면, 멀티 스레드 환경에서 동시성 문제가 발생할 수 있다
-  - 객체의 상태 이용 불가 : static은 프로그램 시점에 메모리에 올라가는데, 정적 메소드 안에 객체의 인스턴스 필드가 초기화되지 않았다면 문제가 생길 수 있다. 그래서 정적 메소드 안에는 정적 변수만 사용할 수 있다.
-  - static 메서드는 오버라이딩 불가
-  - (단위) 테스트 어려움
 
 #### Generic
 
@@ -122,21 +89,6 @@ interface Example {
 #### 불변 객체 vs 가변 객체
 
 ### Java 라이브러리
-
-#### String 만들기
-
-- StringBuffer vs StringBuilder
-  - 공통점 : String과 달리, 둘 다 크기가 유연하게 변하는 가변성을 갖는다. (`append()`)
-    - 변하지 않는 문자열을 자주 사용할 경우 String 타입을 사용하는 것이 좋다
-  - 차이점 : StringBuilder는 동기화를 지원하지 않는 반면, StringBuffer는 동기화를 지원한다
-    - StringBuffer는 `synchronized`를 사용하므로 멀티 스레드 환경에서도 안전하게 동작할 수 있습니다.
-    - StringBuilder는 `synchronized`를 사용하지 않으모로 단일 스르드 환경에서는 StringBuffer보다 더 빠르게 동작할 수 있다
-
-- String Constant Pool
-  - String 을 리터럴 값으로 할당하는 경우엔 Heap 메모리 영역안의 특별한 메모리 공간인 String constant pool 에 저장한다
-  - String constant pool에 존재하는 리터럴 값을 사용하게 된다면, 현재 존재하는 값을 사용한다
-  - new 키워드를 통해 String 변수에 값을 할당하게 되면 일반적인 객체와 동일하게 Heap 영역에 동적으로 메모리 공간이 할당된다
-    - 이와 같은 방법은 메모리가 낭비되므로, 리터럴 방법으로 할당하는 것이 좋다
 
 #### 컬렉션 프레임워크
 
