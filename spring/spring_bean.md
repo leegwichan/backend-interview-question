@@ -6,14 +6,21 @@
 
 ### Spring Bean의 생명 주기
 - Bean은 스프링 컨테이너에 의해 생명주기를 관리한다.
-- 생명 주기 : 객체 생성 -> 의존 설정 -> 초기화 -> 사용 -> 소멸 과정
+- 생명 주기
+  1. 빈 인스턴스화
+  2. 의존성 주입
+  3. 초기화 콜백(@PostConstruct)
+  4. 사용
+  5. 소멸 콜백(@PreDestroy)
+  6.  → 빈 소멸
 - 객체를 사용해 컨테이너가 종료될 때 빈이 지정한 메서드를 호출해 소멸 단계를 거친다.
 - 생명 주기 관련 인터페이스
- - `InitializingBean` : 빈 초기화 시에 정의된 메서드를 호출함
- - `DisposableBean` : 빈 소멸 시에 정의된 메서드를 호출함
+  - BeanPostProcessor나 InitializingBean
+  - `InitializingBean` : 빈 초기화 시에 정의된 메서드를 호출함
+  - `DisposableBean` : 빈 소멸 시에 정의된 메서드를 호출함
 - 생명 주기 관련된 어노테이션
- - `@PostConstruct` : 빈 초기화 시 실행
- - `@PreDestory` : 빈 소멸 시에 실행
+  - `@PostConstruct` : 빈 초기화 시 실행
+  - `@PreDestory` : 빈 소멸 시에 실행
 
 ### Spring Bean의 Scope
 | Scope | Description |
