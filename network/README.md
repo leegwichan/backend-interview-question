@@ -48,3 +48,15 @@
 - [REST API](./rest_api.md)
   - HTTP Method
   - 비멱등성 API 중복 호출 방지
+
+### 웹 통신
+- [Web의 이해](./web.md)
+  - 특정 도메인에 접속하면 일어나는 일
+  - CORS
+  - 브라우저 저장소, 
+- [인증과 인가](./authenication.md)
+  - 세션vs토큰
+  - JWT
+  - OAuth
+- [기타](./etc.md)
+  - 프록시 서버의 종류
